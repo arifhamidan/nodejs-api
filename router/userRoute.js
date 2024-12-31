@@ -50,14 +50,14 @@ router.get('/user', (req, res)=>{
 
 
 router.delete('/user', (req, res)=>{
-    const {nama } = req.query;
+    const { nama } = req.query;
 
     if(!nama) return res.status(400).json({
         status:'failed',
         message: 'nama user yang anda ingin hapus harus diisi'
     });
 
-    const index = userData.findIndex(nama => nama.nama === nama);
+    const index = userData.findIndex(user => user.nama === nama);
 
     if(index === -1) return res.status(404).json({
         status:'failed',
@@ -74,7 +74,7 @@ router.delete('/user', (req, res)=>{
 
 router.put('/user', (req,res)=>{
 
-    const { nama } = req.body;
+    const { nama, umur } = req.body;
     //check title is available or not
     const userExist = userData.find(arr => arr.nama === nama);
     console.log(userExist);
